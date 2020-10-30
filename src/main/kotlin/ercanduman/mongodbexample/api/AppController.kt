@@ -17,6 +17,12 @@ class AppController {
     @PostMapping
     fun insert(@RequestBody hotel: Hotel) = appService.insert(hotel)
 
+    @PutMapping
+    fun update(@RequestBody hotel: Hotel) = appService.update(hotel)
+
+    @GetMapping("/hotels/{id}")
+    fun findById(@PathVariable("id") id: String) = appService.findById(id)
+
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") id: String) = appService.delete(id)
 }
