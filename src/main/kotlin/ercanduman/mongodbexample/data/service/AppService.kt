@@ -10,4 +10,6 @@ class AppService {
     @Autowired
     lateinit var repository: AppRepository
     fun hotels(): List<Hotel> = repository.findAll()
+    fun insert(hotel: Hotel): Hotel = repository.save(hotel)
+    fun delete(id: String) = repository.deleteById(id)
 }
