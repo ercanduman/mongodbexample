@@ -18,6 +18,6 @@ class DataSource(private val repository: AppRepository) : CommandLineRunner {
         )
 
         // Insert these sample hotels into mongoDb each time server started.
-        repository.saveAll(hotels)
+        if (repository.findAll().isEmpty()) repository.saveAll(hotels)
     }
 }

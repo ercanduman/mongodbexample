@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/hotels")
 class AppController {
     @Autowired
     lateinit var appService: AppService
 
-    @GetMapping("/hotels")
+    @GetMapping
     fun hotels(): List<Hotel> = appService.hotels()
 
     @PostMapping
@@ -20,8 +20,11 @@ class AppController {
     @PutMapping
     fun update(@RequestBody hotel: Hotel) = appService.update(hotel)
 
-    @GetMapping("/hotels/{id}")
+    @GetMapping("/{id}")
     fun findById(@PathVariable("id") id: String) = appService.findById(id)
+
+    @GetMapping("/price/{price}")
+    fun findByPriceLessThanEqual(@PathVariable("price") price: Int) = appService.findByPriceLessThanEqual(price)
 
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") id: String) = appService.delete(id)

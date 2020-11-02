@@ -15,4 +15,5 @@ class AppService {
     fun update(hotel: Hotel): Hotel = repository.save(hotel)
     fun delete(id: String) = repository.deleteById(id)
     fun findById(id: String): Optional<Hotel> = repository.findById(id)
+    fun findByPriceLessThanEqual(price: Int) = repository.findByPriceLessThanEqual(price)
 }
