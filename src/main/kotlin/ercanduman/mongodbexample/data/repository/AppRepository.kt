@@ -2,6 +2,7 @@ package ercanduman.mongodbexample.data.repository
 
 import ercanduman.mongodbexample.data.entity.Hotel
 import org.springframework.data.mongodb.repository.MongoRepository
+import org.springframework.data.mongodb.repository.Query
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -12,4 +13,7 @@ interface AppRepository : MongoRepository<Hotel, String> {
      * https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#mongodb.repositories.queries
      */
     fun findByPriceLessThanEqual(price: Int): List<Hotel>
+
+    @Query(value = "{'address.city':?0}")
+    fun findByCity(city: String): List<Hotel>
 }

@@ -23,6 +23,9 @@ class AppController {
     @GetMapping("/{id}")
     fun findById(@PathVariable("id") id: String) = appService.findById(id)
 
+    @GetMapping("/city/{city}")
+    fun findByCity(@PathVariable city: String) = appService.findByCity(city)
+
     @GetMapping("/price/{price}")
     fun findByPriceLessThanEqual(@PathVariable("price") price: Int) = appService.findByPriceLessThanEqual(price)
 

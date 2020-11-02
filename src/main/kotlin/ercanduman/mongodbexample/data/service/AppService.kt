@@ -16,4 +16,5 @@ class AppService {
     fun delete(id: String) = repository.deleteById(id)
     fun findById(id: String): Optional<Hotel> = repository.findById(id)
     fun findByPriceLessThanEqual(price: Int) = repository.findByPriceLessThanEqual(price)
+    fun findByCity(city: String) = repository.findByCity(city)
 }
